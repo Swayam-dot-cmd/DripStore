@@ -1,13 +1,13 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
+import API_BASE_URL from "../api";
 
 const Profile = () => {
   const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     if (!user) {
       navigate('/login');
@@ -15,7 +15,7 @@ const Profile = () => {
     }
     const fetchMyOrders = async () => {
       try {
-        const res = await fetch('/api/orders/myorders', {
+        const res = await fetch(`${API_BASE_URL}/api/orders/myorders`, {
           headers: { Authorization: `Bearer ${user.token}` }
         });
         const data = await res.json();

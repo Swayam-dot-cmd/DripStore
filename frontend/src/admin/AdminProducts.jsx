@@ -1,14 +1,14 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { Link } from 'react-router-dom';
-
+import API_BASE_URL from "../api";
 const AdminProducts = () => {
   const { user } = useContext(AuthContext);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const res = await fetch('/api/products');
+      const res = await fetch(`${API_BASE_URL}/api/products`);
       const data = await res.json();
       setProducts(Array.isArray(data) ? data : []);
     };
