@@ -1,4 +1,4 @@
-# DripStore
+# ShopNest
 
 A full-stack e-commerce web application built using the MERN stack. It provides secure user authentication, product management, online payments, and an admin dashboard.
 
